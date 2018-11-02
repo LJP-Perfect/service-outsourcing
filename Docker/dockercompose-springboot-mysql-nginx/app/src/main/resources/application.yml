@@ -1,0 +1,8 @@
+
+mybatis:
+  type-aliases-package: me.freelee.app.model
+  mapper-locations: classpath:/mapper/*.xml
+
+spring:
+  profiles:
+    active: dev
