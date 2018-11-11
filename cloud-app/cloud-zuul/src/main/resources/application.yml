@@ -1,0 +1,16 @@
+server:
+  port: 8100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+zuul:
+  routes:
+    service:
+      path: /cloud-app/**
+      serviceId: service-api
+  sensitive-headers:
+spring:
+  application:
+    name: cloud-zuul

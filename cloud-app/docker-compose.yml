@@ -1,0 +1,49 @@
+version: "3"
+services:
+  nginx:
+    container_name: v-nginx
+    image: nginx:latest
+    restart: always
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+
+  eureka-server:
+    image: cloud-app/eureka-server
+    ports:
+    - 8000:8000
+    hostname: eureka-server
+
+  service-provider:
+    image: cloud-app/service-provider
+    ports:
+    - 8081:8081
+    hostname: service-provider
+    links:
+    - eureka-server
+    depends_on:
+    - eureka-server
+
+  service-api:
+    image: cloud-app/service-api
+    ports:
+    - 8082:8082
+    hostname: service-api
+    links:
+    - eureka-server
+    - service-provider
+    - cloud-zuul
+    depends_on:
+    - eureka-server
+
+  cloud-zuul:
+    image: cloud-app/cloud-zuul
+    ports:
+      - 8100:8100
+    hostname: cloud-zuul
+    links:
+      - service-api
+    depends_on:
+      - eureka-server
