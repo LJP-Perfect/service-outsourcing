@@ -1,6 +1,6 @@
 ## 项目简介
 
-cloud-app这个小项目目前初步搭建好了微服务脚手架的一部分。使用shiro+jwt构建鉴权体系，spring cloud zuul做API网关进行路由转发，nginx通过反向代理对网关进行高可用和负载均衡和静态化，Eureka进行服务治理（Feign进行服务调用）。
+cloud-app这个小项目目前初步搭建好了微服务脚手架的一部分。使用shiro+jwt构建鉴权体系，spring cloud zuul做API网关进行路由转发，nginx通过反向代理对网关进行高可用和负载均衡和静态化，Eureka进行服务治理（Feign进行服务调用），部署到Docker。
 
 ## 技术选型
 
